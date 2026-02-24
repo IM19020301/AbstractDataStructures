@@ -15,7 +15,7 @@ namespace bsc_sc_rpn
 
         public double Evaluate(string expression)
         {
-       
+
             /*
              * 1. Split the expression into individual tokens using a space as the delimiter.
              * 2. Iterate over each token:
