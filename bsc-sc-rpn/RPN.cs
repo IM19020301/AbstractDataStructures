@@ -27,22 +27,15 @@ namespace bsc_sc_rpn
             ArrayStack<int> stackInt = new ArrayStack<int>(2);
 
             stackInt.IsEmpty();
-            stackInt.Push(0);
+            stackInt.Push(4);
+            stackInt.Pop();
+            stackInt.Push(2);
             stackInt.Push(1);
-            stackInt.Push(2);
-            stackInt.Push(2);
+            stackInt.Peek();
+            stackInt.Peek();
+            stackInt.Pop();
+            stackInt.Peek();
             stackInt.IsEmpty();
-
-
-            // String Stack test.
-            Console.WriteLine("===================");
-            Console.WriteLine("Creating string Stack.");
-
-            ArrayStack<string> stackString = new ArrayStack<string>(10);
-
-            stackString.IsEmpty();
-            stackString.Push("Beans");
-            stackString.IsEmpty();
         }
 
         private void Btn_Eval_Click(object sender, EventArgs e)

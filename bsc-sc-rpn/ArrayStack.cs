@@ -42,12 +42,18 @@ namespace bsc_sc_rpn
 
             Console.WriteLine(item + " removed from stack.");
 
-            return (T)Convert.ChangeType(item, typeof(T));
+            return item;
         }
 
         public T Peek()
         {
-            return (T)Convert.ChangeType(Items[TOP], typeof(T));
+            T item;
+
+            item = Items[TOP];
+
+            Console.WriteLine(item + " is at top of stack.");
+
+            return item;
         }
 
         public bool IsEmpty()
