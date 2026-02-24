@@ -29,6 +29,8 @@ namespace bsc_sc_rpn
 
             int expressionItem;
 
+            expressionItem = 0;
+
             string expression = Txt_Input.Text;
             string[] expressionItems = expression.Split(' ');
 
@@ -41,11 +43,31 @@ namespace bsc_sc_rpn
                 // Sets variables.
                 isNumber = false;
 
+                if (str == "+")
+                {
+                    Console.WriteLine("Adding top two numbers in stack.");
+                }
+                else if(str == "-")
+                {
+                    Console.WriteLine("Subtracting top two numbers in stack.");
+                }
+                else if(str == "*")
+                {
+                    Console.WriteLine("Multiplying top two numbers in stack.");
+                }
+                else if(str == "/")
+                {
+                    Console.WriteLine("Dividing top two numbers in stack.");
+                }
                 // Checks if number is valid and able to be used.
-                if (Int32.TryParse(str, out expressionItem) && expressionItem > 0)
+                else if (Int32.TryParse(str, out expressionItem))
                 {
                     // Marks number as valid.
                     isNumber = true;
+                }
+                else
+                {
+                    Console.WriteLine("ExpressionItem is not a valid input.");
                 }
 
                 // If number is valid adds it to the inputArray.
@@ -54,10 +76,6 @@ namespace bsc_sc_rpn
                     // Adds the number to the inputArray.
                     Console.WriteLine("Adding " + expressionItem + " to stack.");
                     i++;
-                }
-                else
-                {
-                    Console.WriteLine("ExpressionItem is not a valid input.");
                 }
             }
         }
