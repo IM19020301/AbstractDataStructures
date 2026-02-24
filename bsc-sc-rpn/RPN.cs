@@ -20,64 +20,19 @@ namespace bsc_sc_rpn
         {
             InitializeComponent();
 
-            ArrayStack<int> stackInt = new ArrayStack<int>(2);
+            stack = new ArrayStack<double>(10);
+            calculator = new PolishNotationCalculator(stack);
         }
 
         private void Btn_Eval_Click(object sender, EventArgs e)
         {
             // Read and Parse Expression here... 
 
-            int expressionItem;
-
-            expressionItem = 0;
-
             string expression = Txt_Input.Text;
-            string[] expressionItems = expression.Split(' ');
 
-            int i = 0;
-            foreach (string str in expressionItems)
-            {
-                // Declares varaibles.
-                bool isNumber;
+            calculator.Evaluate(expression);
 
-                // Sets variables.
-                isNumber = false;
-
-                if (str == "+")
-                {
-                    Console.WriteLine("Adding top two numbers in stack.");
-                }
-                else if(str == "-")
-                {
-                    Console.WriteLine("Subtracting top two numbers in stack.");
-                }
-                else if(str == "*")
-                {
-                    Console.WriteLine("Multiplying top two numbers in stack.");
-                }
-                else if(str == "/")
-                {
-                    Console.WriteLine("Dividing top two numbers in stack.");
-                }
-                // Checks if number is valid and able to be used.
-                else if (Int32.TryParse(str, out expressionItem))
-                {
-                    // Marks number as valid.
-                    isNumber = true;
-                }
-                else
-                {
-                    Console.WriteLine("ExpressionItem is not a valid input.");
-                }
-
-                // If number is valid adds it to the inputArray.
-                if (isNumber == true)
-                {
-                    // Adds the number to the inputArray.
-                    Console.WriteLine("Adding " + expressionItem + " to stack.");
-                    i++;
-                }
-            }
+            
         }
     }
 }

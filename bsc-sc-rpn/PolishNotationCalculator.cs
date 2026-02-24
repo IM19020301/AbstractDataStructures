@@ -15,6 +15,57 @@ namespace bsc_sc_rpn
 
         public double Evaluate(string expression)
         {
+            double expressionItem;
+
+            expressionItem = 0;
+
+            string[] expressionItems = expression.Split(' ');
+
+            foreach (string str in expressionItems)
+            {
+                // Declares varaibles.
+                bool isNumber;
+
+                // Sets variables.
+                isNumber = false;
+
+                if (str == "+")
+                {
+                    double number1 = stack.Pop();
+                    double number2 = stack.Pop();
+
+                    Console.WriteLine("Adding top two numbers in stack.");
+                }
+                else if (str == "-")
+                {
+                    Console.WriteLine("Subtracting top two numbers in stack.");
+                }
+                else if (str == "*")
+                {
+                    Console.WriteLine("Multiplying top two numbers in stack.");
+                }
+                else if (str == "/")
+                {
+                    Console.WriteLine("Dividing top two numbers in stack.");
+                }
+                // Checks if number is valid and able to be used.
+                else if (double.TryParse(str, out expressionItem))
+                {
+                    // Marks number as valid.
+                    isNumber = true;
+                }
+                else
+                {
+                    Console.WriteLine("ExpressionItem is not a valid input.");
+                }
+
+                // If number is valid adds it to the inputArray.
+                if (isNumber == true)
+                {
+                    stack.Push(expressionItem);
+                }
+            }
+
 
             /*
              * 1. Split the expression into individual tokens using a space as the delimiter.
@@ -28,7 +79,8 @@ namespace bsc_sc_rpn
              *    Pop and return it as the final result.
              */
 
-            return stack.Pop();
+            // return stack.Pop();
+            return 0;
         }
     }
 }

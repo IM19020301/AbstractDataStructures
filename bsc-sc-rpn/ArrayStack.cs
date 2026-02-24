@@ -35,25 +35,41 @@ namespace bsc_sc_rpn
 
         public T Pop()
         {
-            T item;
+            try
+            {
+                T item;
 
-            item = Items[TOP];
-            TOP--;
+                item = Items[TOP];
+                TOP--;
 
-            Console.WriteLine(item + " removed from stack.");
+                Console.WriteLine(item + " removed from stack.");
 
-            return item;
+                return item;
+            }
+            catch
+            {
+                Console.WriteLine("Item cannot be removed, Stack is empty.");
+                return default(T);
+            }
         }
 
         public T Peek()
         {
-            T item;
+            try
+            {
+                T item;
 
-            item = Items[TOP];
+                item = Items[TOP];
 
-            Console.WriteLine(item + " is at top of stack.");
+                Console.WriteLine(item + " removed from stack.");
 
-            return item;
+                return item;
+            }
+            catch
+            {
+                Console.WriteLine("Item cannot be peeked, Stack is empty.");
+                return default(T);
+            }
         }
 
         public bool IsEmpty()
