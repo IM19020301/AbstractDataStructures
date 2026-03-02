@@ -60,7 +60,18 @@ namespace bsc_sc_rpn
                 // Else if array item is "-" operator subtracts top numbers in stack from each other.
                 else if (str == "-")
                 {
-                    Console.WriteLine("Subtracting top two numbers in stack.");
+                    // Fetches the top two numbes from the stack.
+                    number1 = stack.Pop();
+                    number2 = stack.Pop();
+
+                    // Subtracts the two numbers from each other.
+                    result = number2 - number1;
+
+                    // Returns feedback to the console.
+                    Console.WriteLine(number2 + " - " + number1 + " = " + result);
+
+                    // Adds the result to the stack.
+                    stack.Push(result);
                 }
                 // Else if array item is "*" operator multiplies top numbers in stack by each other.
                 else if (str == "*")
