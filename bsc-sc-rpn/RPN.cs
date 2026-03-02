@@ -28,11 +28,17 @@ namespace bsc_sc_rpn
 
         private void Btn_Eval_Click(object sender, EventArgs e)
         {
+            // Declares variables.
+            double output;
+            
             // Sets the expression variable using the etxt box.
             string expression = Txt_Input.Text;
 
             // Runs the calculators Evaluate method on the expression.
-            calculator.Evaluate(expression);
+            output = calculator.Evaluate(expression);
+
+            // Sets label text.
+            Lbl_Output.Text = "The result is: " + output;
         }
     }
 }

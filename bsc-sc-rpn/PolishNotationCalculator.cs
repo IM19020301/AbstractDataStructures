@@ -96,11 +96,23 @@ namespace bsc_sc_rpn
                     number1 = stack.Pop();
                     number2 = stack.Pop();
 
-                    // Divides the two numbers by each other.
-                    result = number2 / number1;
+                    // If either number equals 0 then do not run operation.
+                    if (number1 == 0 || number2 == 0)
+                    {
+                        // Set result == 0.
+                        result = 0;
 
-                    // Returns feedback to the console.
-                    Console.WriteLine(number2 + " / " + number1 + " = " + result);
+                        // Returns feedback to the console.
+                        Console.WriteLine("Cannot divite by 0");
+                    }
+                    else
+                    {
+                        // Divides the two numbers by each other.
+                        result = number2 / number1;
+
+                        // Returns feedback to the console.
+                        Console.WriteLine(number2 + " / " + number1 + " = " + result);
+                    }
 
                     // Adds the result to the stack.
                     stack.Push(result);
@@ -126,21 +138,7 @@ namespace bsc_sc_rpn
                 }
             }
 
-
-            /*
-             * 1. Split the expression into individual tokens using a space as the delimiter.
-             * 2. Iterate over each token:
-             *      - If the token is a number, push it onto the stack.
-             *      - If the token is an operator (+, -, *, /):
-             *          a. Pop two numbers from the stack (b first, then a).
-             *          b. Perform the operation (a + b, a - b, etc.).
-             *          c. Push the result back onto the stack.
-             * 3. After processing all tokens, the result of the calculation will be the single number remaining on the stack.
-             *    Pop and return it as the final result.
-             */
-
-            // return stack.Pop();
-            return 0;
+            return stack.Pop();
         }
     }
 }
