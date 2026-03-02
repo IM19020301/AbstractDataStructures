@@ -13,6 +13,7 @@ namespace bsc_sc_rpn
 {
     public partial class RPN : Form
     {
+        // Declares the stack and calculator elemetnts.
         private IStack<double> stack;
         private PolishNotationCalculator calculator;
 
@@ -20,19 +21,18 @@ namespace bsc_sc_rpn
         {
             InitializeComponent();
 
+            // Initialises the stack and calculator elemetnts.
             stack = new ArrayStack<double>(10);
             calculator = new PolishNotationCalculator(stack);
         }
 
         private void Btn_Eval_Click(object sender, EventArgs e)
         {
-            // Read and Parse Expression here... 
-
+            // Sets the expression variable using the etxt box.
             string expression = Txt_Input.Text;
 
+            // Runs the calculators Evaluate method on the expression.
             calculator.Evaluate(expression);
-
-            
         }
     }
 }

@@ -8,19 +8,31 @@ namespace bsc_sc_rpn
          * (e.g., ArrayStack or LinkedListStack). */
         private IStack<double> stack;
 
+        // PolishNotationCalculator constructor.
         public PolishNotationCalculator(IStack<double> stackImplementation)
         {
             stack = stackImplementation;
         }
 
+        // Evaluate method to process the exrpession.
         public double Evaluate(string expression)
         {
+            // Declares varaibles.
             double expressionItem;
+            double number1;
+            double number2;
+            double result;
 
+            // Sets variables.
             expressionItem = 0;
+            number1 = 0;
+            number2 = 0;
+            result = 0;
 
+            // Breaks apart the expression into individual items.
             string[] expressionItems = expression.Split(' ');
 
+            // Foreach loop to run throuh the entire expressionItems array.
             foreach (string str in expressionItems)
             {
                 // Declares varaibles.
@@ -29,39 +41,54 @@ namespace bsc_sc_rpn
                 // Sets variables.
                 isNumber = false;
 
+                // If array item is "+" operator adds top numbers in stack together.
                 if (str == "+")
                 {
-                    double number1 = stack.Pop();
-                    double number2 = stack.Pop();
+                    // Fetches the top two numbes from the stack.
+                    number1 = stack.Pop();
+                    number2 = stack.Pop();
 
-                    Console.WriteLine("Adding top two numbers in stack.");
+                    // Adds the two numbers together.
+                    result = number2 + number1;
+
+                    // Returns feedback to the console.
+                    Console.WriteLine(number2 + " + " + number1 + " = " + result);
+
+                    // Adds the result to the stack.
+                    stack.Push(result);
                 }
+                // Else if array item is "-" operator subtracts top numbers in stack from each other.
                 else if (str == "-")
                 {
                     Console.WriteLine("Subtracting top two numbers in stack.");
                 }
+                // Else if array item is "*" operator multiplies top numbers in stack by each other.
                 else if (str == "*")
                 {
                     Console.WriteLine("Multiplying top two numbers in stack.");
                 }
+                // Else if array item is "/" operator divides top numbers in stack by each other.
                 else if (str == "/")
                 {
                     Console.WriteLine("Dividing top two numbers in stack.");
                 }
-                // Checks if number is valid and able to be used.
+                // Else if array item is a number check if its valid and usable.
                 else if (double.TryParse(str, out expressionItem))
                 {
                     // Marks number as valid.
                     isNumber = true;
                 }
+                // Else tell user that array item is not a valid input.
                 else
                 {
+                    // Returns feedback to the console.
                     Console.WriteLine("ExpressionItem is not a valid input.");
                 }
 
-                // If number is valid adds it to the inputArray.
+                // If number is valid adds it to the stack.
                 if (isNumber == true)
                 {
+                    // Adds the number to the stack.
                     stack.Push(expressionItem);
                 }
             }
