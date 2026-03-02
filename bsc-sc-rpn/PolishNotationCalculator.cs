@@ -76,7 +76,18 @@ namespace bsc_sc_rpn
                 // Else if array item is "*" operator multiplies top numbers in stack by each other.
                 else if (str == "*")
                 {
-                    Console.WriteLine("Multiplying top two numbers in stack.");
+                    // Fetches the top two numbes from the stack.
+                    number1 = stack.Pop();
+                    number2 = stack.Pop();
+
+                    // multiplies the two numbers by each other.
+                    result = number2 * number1;
+
+                    // Returns feedback to the console.
+                    Console.WriteLine(number2 + " * " + number1 + " = " + result);
+
+                    // Adds the result to the stack.
+                    stack.Push(result);
                 }
                 // Else if array item is "/" operator divides top numbers in stack by each other.
                 else if (str == "/")
